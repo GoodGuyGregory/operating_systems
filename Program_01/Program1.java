@@ -49,5 +49,8 @@ public class Program1 {
         System.out.println("=================================");
         String UserWorkingDir = System.getProperty("user.dir");
         System.out.println("User Working Directory: " + UserWorkingDir);
+        System.out.println("=================================");
+        System.out.println("JIT: enabled");
+
     }
 }
