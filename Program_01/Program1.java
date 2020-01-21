@@ -26,12 +26,18 @@ public class Program1 {
         System.out.println("Java Vendor: " + JavaVendor);
 
         System.out.println("=================================");
+
+        System.out.println("=================================");
         // Operating System Architecture:
+        System.out.println("Operating System Architecture:");
         String OsName = System.getProperty("os.name");
         String OsVersion = System.getProperty("os.version");
-        
+
         System.out.println("Operating System: " + OsName);
         System.out.println("Operating System Version: " + OsVersion);
 
+        System.out.println("=================================");
+        String UserWorkingDir = System.getProperty("user.dir");
+        System.out.println("User Working Directory: " + UserWorkingDir);
     }
 }
