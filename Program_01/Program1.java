@@ -18,7 +18,20 @@ public class Program1 {
         System.out.println(dtf.format(now));
         System.out.println("=================================");
 
-        System.out.println(java.version);
+        // Java Version:
+        String JavaVersion = System.getProperty("java.version");
+        System.out.println("Java Version: " + JavaVersion);
+
+        String JavaVendor = System.getProperty("java.vendor");
+        System.out.println("Java Vendor: " + JavaVendor);
+
+        System.out.println("=================================");
+        // Operating System Architecture:
+        String OsName = System.getProperty("os.name");
+        String OsVersion = System.getProperty("os.version");
+        
+        System.out.println("Operating System: " + OsName);
+        System.out.println("Operating System Version: " + OsVersion);
 
     }
 }
