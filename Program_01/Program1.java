@@ -51,6 +51,5 @@ public class Program1 {
         System.out.println("User Working Directory: " + UserWorkingDir);
         System.out.println("=================================");
         System.out.println("JIT: enabled");
-
     }
 }
