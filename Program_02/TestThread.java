@@ -12,14 +12,15 @@ class MyThread extends Thread {
 }
 
 // Main Class
-public class TestThread()
-{
-	
+public class TestThread {
+
 	// Main Method
 	public static void main(String arg[]) {
 		MyThread thread1, thread2;
 
-		//creates Threads for implementation
+		// creates Threads for implementation
+
+		System.out.println("Starting Thread Program!");
 
 		thread1 = new MyThread();
 		thread2 = new MyThread();
