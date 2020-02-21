@@ -39,10 +39,9 @@ public class TextReader {
                 System.out.println("Other Letter");
                 ;
             }
-            // System.out.print(character);
         }
 
-        // File Done Reading Put a Period in the Cubbyhole:
+        // File Done! Sends . to both consumers:
 
     }
 }
