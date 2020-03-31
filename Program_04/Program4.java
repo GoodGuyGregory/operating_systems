@@ -29,71 +29,72 @@ public class Program4 {
         }
 
     }
+}
 
-    class CubbyHole {
-        private char contents;
-        private boolean available = false;
+class CubbyHole {
+    private char contents;
+    private boolean available = false;
 
-        public synchronized char get() {
-            while (available == false) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                }
+    public synchronized char get() {
+        while (available == false) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
             }
-            available = false;
-            notifyAll();
-            return contents;
         }
-
-        public synchronized void put(char value) {
-            while (available == true) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                }
-            }
-            contents = value;
-            available = true;
-            notifyAll();
-        }
+        available = false;
+        notifyAll();
+        return contents;
     }
 
-    class Consumer extends Thread {
-        private CubbyHole cubbyhole;
-        private char character;
-
-        public Consumer(CubbyHole c) {
-            cubbyhole = c;
+    public synchronized void put(char value) {
+        while (available == true) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+            }
         }
+        contents = value;
+        available = true;
+        notifyAll();
+    }
+}
 
-        public void run() {
+class Consumer extends Thread {
+    private CubbyHole cubbyhole;
+    private char character;
 
+    public Consumer(CubbyHole c) {
+        cubbyhole = c;
+    }
+
+    public void run() {
+        do {
             character = cubbyhole.get();
             System.out.println("Consumer #" + this.cubbyhole + " got: " + character);
+        } while (character != '.');
+    }
+}
 
-        }
+class Producer extends Thread {
+    // Cubbyholes to hold vowels
+    private CubbyHole bananaCub_1;
+
+    // Cubbyholes to hold consonants
+    private CubbyHole carrotCub_2;
+    private File filetoRead;
+
+    public Producer(CubbyHole c1, CubbyHole c2, File f) {
+        // Vowels
+        bananaCub_1 = c1;
+        // Consonants
+        carrotCub_2 = c2;
+        filetoRead = f;
+
     }
 
-    class Producer extends Thread {
-        // Cubbyholes to hold vowels
-        private CubbyHole bananaCub_1;
-
-        // Cubbyholes to hold consonants
-        private CubbyHole carrotCub_2;
-        private File filetoRead;
-
-        public Producer(CubbyHole c1, CubbyHole c2, File f) {
-            // Vowels
-            bananaCub_1 = c1;
-            // Consonants
-            carrotCub_2 = c2;
-            filetoRead = f;
-
-        }
-
-        public void run() {
-
+    public void run() {
+        try {
             FileReader fr = new FileReader(filetoRead); // Creation of File Reader object
             BufferedReader br = new BufferedReader(fr); // Creation of BufferedReader object
             int c = 0;
@@ -133,9 +134,11 @@ public class Program4 {
                         ;
                 }
             }
-
-            // File Done! Sends . to both consumers:
-
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
+        // File Done! Sends . to both consumers:
+
     }
 }
