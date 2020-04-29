@@ -9,3 +9,9 @@ Identify the 3 languages on the top of page 1, with your name and lab number ple
 * Ruby 
 * Python 
 * Go
+
+**Compliling Programs**
+
+* Ruby Version: `ruby <filename>.rb`
+* Python Version: `python <filename>.py`
+* Go Version: `go run <filename>.go`
