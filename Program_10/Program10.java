@@ -23,10 +23,11 @@ public class Program10 {
     public static void main(String[] args) {// main
 
         Program10 obj = new Program10();
-        String cmdLineArg = args[0];
-        // String cmdLineArg2 = args[1];
+        String commdLineArgument = args[0];
+        // String cmdLineArgment = args[1];
+        // String cmdLineTwo
         // System.out.println("Command line argument is " + cmdLineArg);
-        // System.out.println("Command line argument 2 is " + cmdLineArg2);
+        // System.out.println("Second Command is " + cmdLineArg2);
         String pathVar = System.getenv("PATH");
         // System.out.println("The PATH variable is " + pathVar);
         String[] dirArray = pathVar.split(":");
