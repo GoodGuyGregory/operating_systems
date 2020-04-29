@@ -14,8 +14,8 @@ public class Program10 {
                         "Directory in Question: \"" + listOfDirItems[i] + "\" --- contents: \"" + fileContents + "\"");
                 // break;
             } // if
-            else {
-                System.out.println("Directory does not contain" + listOfDirItems[i]  + fileContents);
+            else if (listOfDirItems[i].isDirectory()) {
+                System.out.println("Directory does not contain" + listOfDirItems[i] + fileContents);
             }
         } // for
     }// listFiles
@@ -26,7 +26,7 @@ public class Program10 {
         String cmdLineArg = args[0];
         String pathVariable = System.getenv("PATH");
 
-        String[] dirContents = pathVariable.split(":");
+        String[] dirContents = pathVariable.split(";");
         for (String dirElements : dirContents) {
             programReader.interrogateDir(dirElements, cmdLineArg);
         }
