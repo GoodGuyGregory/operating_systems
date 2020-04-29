@@ -37,5 +37,3 @@ public class Program10 {
 
     }// main
 }// class
-
-
