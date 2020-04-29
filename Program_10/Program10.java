@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class P10 {
+public class Program10 {
 
     public void interrogateDir(String dirString, String filename) {
         File folder = new File(dirString);
@@ -14,15 +14,15 @@ public class P10 {
                 // break;
             } // if
             else {
-                // System.out.println("Directory "+listOfFiles[i]+" does not contain
-                // "+filename);
+                System.out.println("Directory"  + "+listOfFiles[i]+"  + "does not contain"
+                + filename);
             }
         } // for
     }// listFiles
 
     public static void main(String[] args) {// main
 
-        P10 obj = new P10();
+        Program10 obj = new Program10();
         String cmdLineArg = args[0];
         // String cmdLineArg2 = args[1];
         // System.out.println("Command line argument is " + cmdLineArg);
@@ -37,3 +37,5 @@ public class P10 {
 
     }// main
 }// class
+
+
