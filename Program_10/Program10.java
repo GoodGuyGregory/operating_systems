@@ -3,38 +3,32 @@ import java.io.*;
 
 public class Program10 {
 
-    public void interrogateDir(String dirString, String filename) {
-        File folder = new File(dirString);
-        File[] listOfFiles = folder.listFiles();
+    public void interrogateDir(String DirInformation, String fileContents) {
+        File folder = new File(DirInformation);
+        File[] listOfDirItems = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            String fileTemp = listOfFiles[i].getName().toString();
-            if (listOfFiles[i].isFile() && fileTemp.equals(filename)) {
-                System.out.println("Directory: \"" + listOfFiles[i] + "\" --- contains: \"" + filename + "\"");
+        for (int i = 0; i < listOfDirItems.length; i++) {
+            String fileHolder = listOfDirItems[i].getName().toString();
+            if (listOfDirItems[i].isFile() && fileHolder.equals(fileContents)) {
+                System.out.println(
+                        "Directory in Question: \"" + listOfDirItems[i] + "\" --- contents: \"" + fileContents + "\"");
                 // break;
             } // if
             else {
-                System.out.println("Directory"  + "+listOfFiles[i]+"  + "does not contain"
-                + filename);
+                System.out.println("Directory does not contain" + listOfDirItems[i]  + fileContents);
             }
         } // for
     }// listFiles
 
     public static void main(String[] args) {// main
 
-        Program10 obj = new Program10();
-        String commdLineArgument = args[0];
-        // String cmdLineArgment = args[1];
-        // String cmdLineTwo
-        // System.out.println("Command line argument is " + cmdLineArg);
-        // System.out.println("Second Command is " + cmdLineArg2);
-        String pathVar = System.getenv("PATH");
-        // System.out.println("The PATH variable is " + pathVar);
-        String[] dirArray = pathVar.split(":");
-        for (String eachDir : dirArray) {
-            // System.out.println(eachDir);
-            obj.interrogateDir(eachDir, cmdLineArg);
-        } // foreach
+        Program10 programReader = new Program10();
+        String cmdLineArg = args[0];
+        String pathVariable = System.getenv("PATH");
 
-    }// main
-}// class
+        String[] dirContents = pathVariable.split(":");
+        for (String dirElements : dirContents) {
+            programReader.interrogateDir(dirElements, cmdLineArg);
+        }
+    }
+}
