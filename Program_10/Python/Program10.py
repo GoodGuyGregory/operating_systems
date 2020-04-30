@@ -16,12 +16,19 @@ def osInterigation(pathVar):
         currentPATH = os.environ.get('PATH')
         listOfElements = currentPATH.split(':' )
         for i in range(0, listOfElements.__len__() - 1):
-            directoryIndex = listOfElements[i] 
-            # print(directoryIndex)
+            directoryIndex = listOfElements[i]
             
-                    
+            # print(directoryIndex)
+            for folderName, subFolder, filenames in os.walk(directoryIndex):
+                # print('The Current folder is ' + folderName)
+                for filename in filenames:
+                        # print('File Inside' + folderName + ' : ' + filename)
+                        if filename == searchItem:
+                            print("Found at: " + folderName)
         
         
-        
-pathSearch = sys.argv
-osInterigation(pathSearch)
+def main():
+    pathSearch = sys.argv
+    osInterigation(pathSearch)
+
+main()
