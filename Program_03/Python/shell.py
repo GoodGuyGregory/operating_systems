@@ -1,16 +1,14 @@
 import sys
 import os
-
+import fileinput
 
 
 def readTheDisk(commandArgs):
-    print("Command Line Arguments Taken:")
-    import sys
 
     for line in sys.stdin:
-        sys.stdout.write(line)
+        # Avoids First Line Print
 
-        print("Processing....")
+        sys.stdout.write(line[2:])
 
 
 def main():
