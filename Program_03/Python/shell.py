@@ -10,15 +10,12 @@ parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument('-v', '-V', help="displays version", action="store_true")
 parser.add_argument('-h', '-H', '-?', action='help',
                     default=argparse.SUPPRESS, help='show help and usage.')
-parser.add_argument('-f', '-F', type=str, help="file to be read")
+parser.add_argument('file', help="display drive contents", type=str)
 
 args = parser.parse_args()
 
 
 def readTheDisk(commandArgs):
-    # Checks for File to use
-    # if commandArgs
-
     # Checking for Stdin Pipe
     if select.select([sys.stdin], [], [], 0.0)[0]:
         # diskDrive = []
@@ -31,14 +28,28 @@ def readTheDisk(commandArgs):
 
                 sys.stdout.write(line[2:])
                 counter += 1
+    else:
+        # Checks for File to use
+        fileName = args.file
+        counter = 0
+        print("Displaying Drive Data: ")
+        for fileName in fileinput.input():
+            # skip header lines of drive
+            if counter == 0 or counter == 1:
+                counter += 1
+
+            else:
+                sys.stdout.write(str(fileName[2:]))
 
 
 def main():
     commands = sys.argv
-    readTheDisk(commands)
+
     # Checking for files or Arguments
-    if args.v or args.V:
+    if args.v:
         print("Program Version: 1.0")
+    elif args.file:
+        readTheDisk(commands)
 
 
 main()

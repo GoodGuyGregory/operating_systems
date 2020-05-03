@@ -21,6 +21,5 @@ else:
     print "No data"
     
 # On Windows the select module may only be used with sockets though so you'd need to use an alternative mechanism.
-
-shareeditfollow
+# shareeditfollow
 ```
