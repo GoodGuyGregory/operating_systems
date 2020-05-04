@@ -7,10 +7,16 @@ import argparse
 # declare parser class
 parser = argparse.ArgumentParser(add_help=False)
 
-parser.add_argument('-v', '-V', help="displays version", action="store_true")
-parser.add_argument('-h', '-H', '-?', action='help',
+parser.add_argument('-v', '-V', action="version",
+                    version="version: 1.2.0", help="display version")
+parser.add_argument('-h', '-H', '--help', action='help',
                     default=argparse.SUPPRESS, help='show help and usage.')
+parser.add_argument('-?', help="show usage", action='help')
 parser.add_argument('-f', '--file', help="display drive contents", type=str)
+# Checks if there are no Arguments to Parse and Display Usage:
+if sys.stdin.isatty():
+    parser.print_help(sys.stderr)
+    sys.exit(1)
 
 args = parser.parse_args()
 
