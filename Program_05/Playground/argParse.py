@@ -35,7 +35,7 @@ def main():
     # print(cwdForProgram)
     # Get Command Line Args
     commands = sys.argv
-    print(commands)
+    # print(commands)
     # pathtoFile = os.path.join(cwdForProgram, commands[1])
     # print(pathtoFile)
 
