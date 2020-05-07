@@ -14,7 +14,7 @@ parser.add_argument('-h', '-H', '--help', action='help',
 parser.add_argument('-?', help="show usage", action='help')
 parser.add_argument('-f', '--file', help="display drive contents", type=str)
 parser.add_argument(
-    '-dir', 'dir', help="this will list all the files on the disk")
+    '-dir', '-D', help="this will list all the files on the disk")
 
 args = parser.parse_args()
 
@@ -38,7 +38,6 @@ def readTheDisk(commandArgs):
     # Checking for Stdin Pipe
     if select.select([sys.stdin], [], [], 0.0)[0]:
         # print("Found File from Std.in")
-        # diskDrive = []
         counter = 0
         # print("Displaying Drive Data: ")
         for line in sys.stdin:
@@ -46,7 +45,10 @@ def readTheDisk(commandArgs):
                 counter += 1
             else:
                 sys.stdout.write(line[2:])
+                driveData.append(line[2:])
                 counter += 1
+        diskParse(driveData)
+
     else:
             # Checking for File Args
             # print("pre File check")
@@ -62,11 +64,25 @@ def readTheDisk(commandArgs):
                     counter += 1
                 else:
                     sys.stdout.write(str(line[2:]))
+                    driveData.append(line[2:])
+            diskParse(driveData)
         else:
             print("File Not Found, Please Enter a File that Exists")
 
+# Confirm Load
+
+
+def diskCheck(disk):
+    for line in disk:
+        sys.stdout.write(line)
+
+
+def diskParse(driveFile):
+    return print("Searching Disk")
+
 
 def main():
+
     commands = sys.argv
     # print(commands)
     # Checking for files or Arguments
@@ -81,4 +97,5 @@ def main():
         sys.exit(1)
 
 
+driveData = []
 main()
